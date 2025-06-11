@@ -14,10 +14,9 @@ if (!$question) {
   exit;
 }
 
-// ✅ 여기 본인의 Gemini API 키 입력 (https://aistudio.google.com/app/apikey)
-$apiKey = 'AIzaSyCOdZQkwRaVXqgVVwJ4lF_XH_PeNd7Nw_Q';  // ← 반드시 본인 키로 교체
+$apiKey = '';  // ← 반드시 본인 키로 교체
 
-$endpoint = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=$apiKey";
+$endpoint = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent?key=$apiKey";
 
 $data = [
   'contents' => [

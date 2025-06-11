@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../db_connect.php';
 
-$apiKey = '672726e2c0b245d99db2592da35bfdc1'; // 🔑 여기에 본인의 RAWG API 키를 입력하세요
+$apiKey = ''; // 🔑 여기에 본인의 RAWG API 키를 입력하세요
 $totalPages = 3; // 최대 120개 게임 가져오기
 $pageSize = 40;
 
