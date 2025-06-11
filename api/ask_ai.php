@@ -1,6 +1,11 @@
 <?php
+// 에러 출력 설정
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 header('Content-Type: application/json');
 
+// 사용자 입력 받기
 $input = json_decode(file_get_contents("php://input"), true);
 $question = trim($input['question'] ?? '');
 
@@ -9,10 +14,10 @@ if (!$question) {
   exit;
 }
 
-// 👉 여기에 본인의 Google AI API 키 입력
-$apiKey = 'AIzaSyCOdZQkwRaVXqgVVwJ4lF_XH_PeNd7Nw_Q';
+// ✅ 여기 본인의 Gemini API 키 입력 (https://aistudio.google.com/app/apikey)
+$apiKey = 'AIzaSyCOdZQkwRaVXqgVVwJ4lF_XH_PeNd7Nw_Q';  // ← 반드시 본인 키로 교체
 
-$endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=$apiKey";
+$endpoint = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=$apiKey";
 
 $data = [
   'contents' => [
@@ -38,7 +43,7 @@ curl_close($ch);
 
 $result = json_decode($response, true);
 
-// ✅ 응답 정상
+// ✅ 성공 응답일 때
 if ($httpCode === 200 && isset($result['candidates'][0]['content']['parts'][0]['text'])) {
   echo json_encode([
     'response' => $result['candidates'][0]['content']['parts'][0]['text']
@@ -46,6 +51,7 @@ if ($httpCode === 200 && isset($result['candidates'][0]['content']['parts'][0]['
 } else {
   echo json_encode([
     'error' => $result['error']['message'] ?? 'Gemini 응답 오류',
-    'httpCode' => $httpCode
+    'httpCode' => $httpCode,
+    'raw' => $response // 필요 시 제거 가능
   ]);
 }
