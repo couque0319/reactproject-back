@@ -1,0 +1,2 @@
+.home{padding:2rem}.game-list{grid-gap:1.5rem;display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}.game-card{background-color:#fff;border-radius:8px;box-shadow:0 2px 5px #0000001a;padding:1rem;transition:transform .2s}.game-card:hover{transform:translateY(-5px)}
+/*# sourceMappingURL=main.3032c071.css.map*/

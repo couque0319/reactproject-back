@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /reactproject/
+
+# ✅ API 경로는 index.html로 넘기지 않음
+RewriteCond %{REQUEST_URI} !^/reactproject/api/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
